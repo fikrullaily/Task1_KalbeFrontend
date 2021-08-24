@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+    .flex-container {
+        width: 1000px;
+        margin: auto;
+        display: flex;
+        flex-wrap: nowrap;
+        font-family: Arial, Helvetica, sans-serif;
+        text-align: justify;
+    }
+
+    .div p {
+        text-align: justify;
+        font-size: 18px;
+        font-family: Arial, Helvetica, sans-serif;
+        padding: auto;
+    }
+
+    .button{
+        background-color: blue;
+        color: rgb(255, 255, 255);
+        border: none;
+        padding: 15px 60px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 15px;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    .satu{
+        flex: 80%;
+        padding: 0px 15px;
+    }
+    .dua{
+        flex: 80%;
+        padding: 0px 15px;
+    }
+    h1{
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        text-align: justify;
+       }
+    h3{
+        font-size: medium;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+           
+       }
+    img{
+        width: 280px;
+        float: right;
+       }
+    .pindah{
+        margin-right: 100px;
+    }
+</style>
+</head>
+    <body>
+        <div class="flex-container">
+        <div class="satu" style="margin: 30px;">
+            <h1 id="title" style="margin-left: 20px;">Mission and Goals</h1>
+            <button class="button" onclick="JsFunction()">mission</button>
+            <p id="text1" style="margin-left:25px;"> He as spoke avoid given downs money on we. Of properly carriage shutters ye as wandered up repeated moreover. Article evident arrived express highest men did boy. Mistress sensible entirely am so. Quick can manor smart money hopes worth too. Comfort produce husband boy her had hearing. Law others theirs passed but wishes. You day real less till dear read. Considered use dispatched melancholy sympathize discretion led.</p>
+            <p><a id="klik"></a></p>
+        </div>
+        <div class="dua">
+            <h3>goals</h3>
+            <p>Article evident arrived express highest men did boy. Mistress sensible entirely am so. Quick can manor smart money hopes worth too. Comfort produce husband boy her had hearing. Law others theirs passed but wishes. You day real less till dear read. Considered use dispatched melancholy sympathize discretion led. Oh feel if up to till like.</p>
+            <img id="image" src="img/building.jpeg">
+        </div>
+        </div>
+
+        <script>
+            var klik = 0;
+
+            function JsFunction(){
+                document.getElementById("title").style.color = "blue";
+                document.getElementById("text1").style.color = "red";
+                klik +=1;
+                document.getElementById("klik").innerHTML ="Klik sebanyak: " +klik;
+                
+                const image = document.getElementById('image');
+                image.classList.toggle('pindah')
+            }
+        </script>
+    </body>
+</html>
