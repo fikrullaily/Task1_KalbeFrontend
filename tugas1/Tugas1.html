@@ -2,85 +2,153 @@
 <html>
 <head>
 <style>
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+        line-height: 1.65;
+        text-align: justify;
+    }
     .flex-container {
         width: 1000px;
         margin: auto;
         display: flex;
         flex-wrap: nowrap;
-        font-family: Arial, Helvetica, sans-serif;
         text-align: justify;
     }
-
-    .div p {
-        text-align: justify;
-        font-size: 18px;
-        font-family: Arial, Helvetica, sans-serif;
-        padding: auto;
-    }
-
-    .button{
-        background-color: blue;
+    .buttons, .btnPopup {
+        background-color:blue;
         color: rgb(255, 255, 255);
         border: none;
-        padding: 15px 60px;
+        padding: 15px 80px;
         text-align: center;
         text-decoration: none;
         display: inline-block;
-        font-size: 15px;
+        font-size: 18px;
+        font-weight: 700;
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        flex-direction: column-reverse;
+    }
+    .button {
+        font-size: 14px;
+        padding: 15px 85px;
+    }
+    .btnPopup:hover, .button:hover, 
+    .closebtn:hover, .closebtn:focus{
+        color: rgb(0, 0, 0);
+        text-decoration: none;
+        cursor: pointer;
+    }
+    .content{
+        padding: 0px 50px 0px 50px;
+        flex: 80%;
     }
     .satu{
-        flex: 80%;
-        padding: 0px 15px;
+        margin-top: 80px;
+        padding: auto;
     }
     .dua{
-        flex: 80%;
-        padding: 0px 15px;
+        display: flex;
+        flex-direction: column;
     }
-    h1{
+    h1 h3{
         font-family: Verdana, Geneva, Tahoma, sans-serif;
         text-align: justify;
+       
        }
-    h3{
-        font-size: medium;
-        font-family: Verdana, Geneva, Tahoma, sans-serif;
-           
-       }
+    h1, .text{
+        margin-left: 30px;
+    }
+    .txtPopup{
+        font-weight: 500;
+        font-size: 18px;
+        text-align: center;
+    }
     img{
         width: 280px;
-        float: right;
+        align-self: flex-end;
        }
     .pindah{
-        margin-right: 100px;
+        align-self: center;
     }
+    .modal{
+        display: none;
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        height: 100%;
+        width: 100%;
+        overflow: auto;
+        background-color: rgba(0,0,0,0.5);
+    }
+    .modal-content{
+        background-color: rgb(141, 209, 248);
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 1rem 1.5rem;
+        width: 24rem;
+        border-radius: 0.5rem;
+    }
+    .closebtn{
+        color: white;
+        float: right;
+        font-size: 30px;
+    }
+
 </style>
 </head>
     <body>
         <div class="flex-container">
-        <div class="satu" style="margin: 30px;">
-            <h1 id="title" style="margin-left: 20px;">Mission and Goals</h1>
-            <button class="button" onclick="JsFunction()">mission</button>
-            <p id="text1" style="margin-left:25px;"> He as spoke avoid given downs money on we. Of properly carriage shutters ye as wandered up repeated moreover. Article evident arrived express highest men did boy. Mistress sensible entirely am so. Quick can manor smart money hopes worth too. Comfort produce husband boy her had hearing. Law others theirs passed but wishes. You day real less till dear read. Considered use dispatched melancholy sympathize discretion led.</p>
-            <p><a id="klik"></a></p>
-        </div>
-        <div class="dua">
-            <h3>goals</h3>
-            <p>Article evident arrived express highest men did boy. Mistress sensible entirely am so. Quick can manor smart money hopes worth too. Comfort produce husband boy her had hearing. Law others theirs passed but wishes. You day real less till dear read. Considered use dispatched melancholy sympathize discretion led. Oh feel if up to till like.</p>
-            <img id="image" src="img/building.jpeg">
-        </div>
+            <div class="content satu" >
+                <h1 id="title">Mission and Goals</h1>
+                <button class="button buttons" onclick="FuncMission()">mission</button>
+                <p id="text1" class="text"> He as spoke avoid given downs money on we. 
+                    Of properly carriage shutters ye as wandered up repeated moreover. 
+                    Article evident arrived express highest men did boy. Mistress sensible entirely am so. 
+                    Quick can manor smart money hopes worth too. Comfort produce husband boy her had hearing. 
+                    Law others theirs passed but wishes. You day real less till dear read. 
+                    Considered use dispatched melancholy sympathize discretion led.</p>
+                <p><a id="klik"></a></p>
+
+                <button id="modalbtn" class="btnPopup" onclick="OpenPopup()">click me!</button>
+                <div id="simpleModal" class="modal">
+                    <div class="modal-content">
+                        <span id="CloseBtn" class="closebtn" onclick="ClosePopup()">&times;</span>
+                        <p class="txtPopup">Hello... its about modal popup. <br>
+                            Always fight for better future :)</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content dua">
+                <h3>goals</h3>
+                <p id="text2">Article evident arrived express highest men did boy. Mistress sensible entirely am so. 
+                    Quick can manor smart money hopes worth too. Comfort produce husband boy her had hearing. 
+                    Law others theirs passed but wishes. You day real less till dear read. 
+                    Considered use dispatched melancholy sympathize discretion led. 
+                    Oh feel if up to till like.</p>
+                    <img id="gambar" src="img/building.jpeg">
+            </div>     
         </div>
 
         <script>
-            var klik = 0;
+            let klik = 0;
 
-            function JsFunction(){
+            function FuncMission(){
                 document.getElementById("title").style.color = "blue";
                 document.getElementById("text1").style.color = "red";
                 klik +=1;
                 document.getElementById("klik").innerHTML ="Klik sebanyak: " +klik;
                 
-                const image = document.getElementById('image');
+                const image = document.getElementById('gambar');
                 image.classList.toggle('pindah')
+            }
+            function OpenPopup(){
+                document.getElementById("simpleModal").style.display = 'block';
+            }
+            function ClosePopup(){
+                document.getElementById("simpleModal").style.display= 'none';
             }
         </script>
     </body>
